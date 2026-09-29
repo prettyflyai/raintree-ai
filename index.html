@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/praxisiq-design-system-019df95f-a68b-74c0-b955-54d5e35dbcc3/colors_and_type.css">
+<script src="_ds/praxisiq-design-system-019df95f-a68b-74c0-b955-54d5e35dbcc3/_ds_bundle.js"></script>
+<title>Raintree Systems — 2027 AI operating plan</title>
+<style>
+body { margin: 0; background: #FFFFFF; }
+a { color: var(--ciq-blue-600); text-decoration: none; }
+a:hover { color: var(--ciq-blue-700); text-decoration: underline; text-underline-offset: 3px; }
+input:focus { outline: none; }
+::placeholder { color: var(--ciq-ink-300); }
+</style>
+</helmet>
+
+<div style="font-family: var(--font-sans); color: var(--ciq-ink-900); background: #FFFFFF; min-height: 100vh; display: flex; flex-direction: column;">
+
+<sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+<div style="position: fixed; inset: 0; z-index: 100; background: var(--pq-bone); display: flex; align-items: center; justify-content: center; padding: 24px;">
+  <div style="width: 100%; max-width: 380px; background: #FFFFFF; border: 1px solid var(--hairline); border-radius: 12px; box-shadow: var(--shadow-modal); padding: 32px 30px;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 22px;">
+      <img src="https://www.google.com/s2/favicons?domain=raintreeinc.com&amp;sz=64" alt="" style="width: 24px; height: 24px; border-radius: 4px; border: 1px solid var(--hairline);">
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-500);">Raintree Systems · confidential</span>
+    </div>
+    <h1 style="font-family: var(--font-display); font-weight: 400; font-size: 28px; line-height: 1.15; letter-spacing: -0.018em; margin: 0 0 8px; color: var(--pq-midnight);">2027 AI operating plan</h1>
+    <p style="font-size: 14px; line-height: 1.55; color: var(--pq-steel); margin: 0 0 22px;">Enter the password you were given to view this plan.</p>
+    <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px;">Password</label>
+    <input type="password" value="{{ pw }}" onChange="{{ onPw }}" onKeyDown="{{ onPwKey }}" autoFocus="{{ true }}" style="width: 100%; box-sizing: border-box; height: 42px; border: 1px solid {{ pwBorder }}; border-radius: 6px; padding: 0 12px; font-family: var(--font-sans); font-size: 14px;">
+    <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
+      <div style="font-size: 12px; color: var(--ciq-red-700); margin-top: 6px;">That password is incorrect.</div>
+    </sc-if>
+    <button onClick="{{ unlock }}" style="width: 100%; height: 42px; margin-top: 16px; border: 0; border-radius: 8px; background: var(--ciq-blue-600); color: #FFFFFF; font-family: var(--font-sans); font-size: 14px; font-weight: 600; cursor: pointer;" style-hover="background: var(--ciq-blue-700);">View plan →</button>
+  </div>
+</div>
+</sc-if>
+
+<header style="position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding: 12px clamp(20px, 4vw, 48px); background: rgba(255,255,255,0.86); backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid var(--hairline);">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img src="https://www.google.com/s2/favicons?domain=raintreeinc.com&amp;sz=64" alt="" style="width: 22px; height: 22px; border-radius: 4px; border: 1px solid var(--hairline);">
+    <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-500);">Raintree Systems · 2027 AI operating plan</div>
+  </div>
+  <div style="flex: 1;"></div>
+  <nav style="display: flex; gap: 4px;">
+    <button onClick="{{ goOverview }}" style="{{ navOverview }}">Use cases</button>
+    <button onClick="{{ goPlan }}" style="{{ navPlan }}">Plan</button>
+  </nav>
+</header>
+
+<sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+<main style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 48px clamp(20px, 4vw, 48px) 80px; box-sizing: border-box;">
+  <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pq-blue); margin-bottom: 14px;">Deep dive · raintreeinc.com</div>
+  <h1 style="font-family: var(--font-display); font-weight: 400; font-size: clamp(34px, 4.4vw, 54px); line-height: 1.08; letter-spacing: -0.022em; margin: 0 0 16px; max-width: 900px; color: var(--pq-midnight);">Eighteen agents, mapped to Raintree’s two 2027 pillars.</h1>
+  <p style="font-size: 17px; line-height: 1.55; color: var(--pq-steel); margin: 0 0 32px; max-width: 720px; text-wrap: pretty;">Each use case starts from a pain point Raintree named, carries a modelled return, and opens into a working prototype. Customer-facing agents show revenue lift; back-office agents show savings.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--divider); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; margin-bottom: 40px;">
+    <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+      <div style="background: #FFFFFF; padding: 18px 22px;">
+        <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-400);">{{ k.label }}</div>
+        <div style="font-family: var(--font-mono); font-size: 26px; font-weight: 500; margin-top: 6px; color: var(--pq-midnight);">{{ k.value }}</div>
+        <div style="font-size: 12px; color: var(--ciq-ink-400); margin-top: 4px;">{{ k.note }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 36px;">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <sc-for list="{{ pillarChips }}" as="c" hint-placeholder-count="3">
+        <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div style="flex: 1;"></div>
+    <div style="display: flex; align-items: center; gap: 8px; min-width: 260px; border: 1px solid var(--hairline-strong); border-radius: 8px; padding: 0 12px; height: 40px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--ciq-ink-400);"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      <input type="text" placeholder="Search agents or pain points" value="{{ query }}" onChange="{{ onQuery }}" style="flex: 1; border: 0; font-family: var(--font-sans); font-size: 14px; background: transparent; color: var(--ciq-ink-900);">
+    </div>
+  </div>
+
+  <sc-for list="{{ areas }}" as="ar" hint-placeholder-count="2">
+    <section style="margin-bottom: 48px;">
+      <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding-bottom: 12px; border-bottom: 1px solid var(--divider); margin-bottom: 18px;">
+        <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--pq-blue);">{{ ar.code }}</span>
+        <h2 style="font-family: var(--font-display); font-weight: 400; font-size: 26px; letter-spacing: -0.012em; margin: 0; color: var(--pq-midnight);">{{ ar.name }}</h2>
+        <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-400);">{{ ar.pillar }}</span>
+        <div style="flex: 1;"></div>
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ciq-ink-400);">{{ ar.total }}</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;">
+        <sc-for list="{{ ar.agents }}" as="g" hint-placeholder-count="3">
+          <div onClick="{{ g.onOpen }}" style="display: flex; flex-direction: column; gap: 14px; border: 1px solid var(--hairline); border-radius: 12px; background: #FFFFFF; box-shadow: var(--shadow-card); padding: 22px 22px 18px; cursor: pointer; transition: border-color 200ms ease;" style-hover="border-color: var(--hairline-strong);">
+            <div style="display: flex; justify-content: space-between; gap: 10px; align-items: center;">
+              <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-500); background: var(--ciq-ink-050); border-radius: 999px; padding: 4px 10px;">{{ g.protoKind }}</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ciq-ink-400);">{{ g.weeks }}</span>
+            </div>
+            <h3 style="font-size: 17px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; margin: 0;">{{ g.name }}</h3>
+            <p style="font-size: 13px; line-height: 1.55; color: var(--ciq-ink-600); margin: 0; text-wrap: pretty;">{{ g.pain }}</p>
+            <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--divider); display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;">
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ciq-ink-400);">{{ g.kindLabel }}</div>
+                <div style="font-family: var(--font-mono); font-size: 20px; font-weight: 500; margin-top: 3px; color: {{ g.kindColor }};">{{ g.valueLabel }}</div>
+              </div>
+              <span style="font-size: 13px; font-weight: 600; color: var(--ciq-blue-600);">Open prototype →</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-for>
+  <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 60px 0; text-align: center; color: var(--ciq-ink-400); font-size: 14px;">No agent matches that search.</div>
+  </sc-if>
+  <p style="font-family: var(--font-mono); font-size: 11px; line-height: 1.6; color: var(--ciq-ink-400); margin: 8px 0 0; max-width: 760px;">Returns are modelled from Raintree’s estimated installed base, ARR and headcount against PraxisIQ delivery benchmarks. Fees and owners are placeholders to confirm in the working session.</p>
+</main>
+</sc-if>
+
+<sc-if value="{{ isAgent }}" hint-placeholder-val="{{ false }}">
+<main style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 28px clamp(20px, 4vw, 48px) 80px; box-sizing: border-box;">
+  <button onClick="{{ goOverview }}" style="border: 0; background: transparent; padding: 0; cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ciq-ink-400); margin-bottom: 20px;">← All use cases</button>
+  <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pq-blue); margin-bottom: 10px;">{{ ag.eyebrow }}</div>
+  <h1 style="font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 20px; color: var(--pq-midnight);">{{ ag.name }}</h1>
+
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 12px 16px; background: var(--pq-bone); border-radius: 8px; margin-bottom: 28px;">
+    <span style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-500);">2027 goals this serves</span>
+    <sc-for list="{{ ag.goalChips }}" as="gc" hint-placeholder-count="2">
+      <span style="font-size: 13px; font-weight: 500; color: var(--pq-midnight); background: #FFFFFF; border: 1px solid var(--hairline); border-radius: 999px; padding: 5px 12px;">{{ gc.label }}</span>
+    </sc-for>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 36px;">
+    <div style="border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
+      <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-red-700); margin-bottom: 10px;">Pain point</div>
+      <p style="font-size: 15px; line-height: 1.6; margin: 0; color: var(--ciq-ink-800); text-wrap: pretty;">{{ ag.pain }}</p>
+    </div>
+    <div style="border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
+      <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pq-blue); margin-bottom: 10px;">What the agent does</div>
+      <p style="font-size: 15px; line-height: 1.6; margin: 0; color: var(--ciq-ink-800); text-wrap: pretty;">{{ ag.solution }}</p>
+    </div>
+    <div style="border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px; background: var(--ciq-ink-025);">
+      <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-500);">{{ ag.kindLabel }}</div>
+      <div style="font-family: var(--font-mono); font-size: 34px; font-weight: 500; margin: 6px 0 4px; color: {{ ag.kindColor }};">{{ ag.valueLabel }}</div>
+      <div style="font-family: var(--font-mono); font-size: 11px; line-height: 1.5; color: var(--ciq-ink-500); margin-bottom: 16px;">{{ ag.basis }}</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px;">
+        <sc-for list="{{ ag.facts }}" as="f" hint-placeholder-count="4">
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ciq-ink-400);">{{ f.label }}</div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 3px;">{{ f.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 4px; border-bottom: 1px solid var(--divider); margin-bottom: 24px;">
+    <button onClick="{{ tabProto }}" style="{{ tabProtoStyle }}">Working prototype</button>
+    <button onClick="{{ tabPlan }}" style="{{ tabPlanStyle }}">Build plan</button>
+  </div>
+
+  <sc-if value="{{ showPlanTab }}" hint-placeholder-val="{{ false }}">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+      <sc-for list="{{ ag.steps }}" as="s" hint-placeholder-count="4">
+        <div onClick="{{ s.onClick }}" style="{{ s.style }}">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--pq-blue); margin-bottom: 8px;">{{ s.label }}</div>
+          <div style="font-size: 15px; font-weight: 600; line-height: 1.35;">{{ s.title }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showQueue }}" hint-placeholder-val="{{ false }}">
+    <div style="display: grid; grid-template-columns: minmax(240px, 320px) minmax(0, 1fr); gap: 20px; align-items: start;">
+      <div style="border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden;">
+        <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-400); padding: 12px 16px; border-bottom: 1px solid var(--divider); background: var(--ciq-ink-025);">Agent queue · live sample</div>
+        <sc-for list="{{ queue }}" as="r" hint-placeholder-count="3">
+          <button onClick="{{ r.onClick }}" style="{{ r.style }}">
+            <span style="display: block; font-size: 14px; font-weight: 600; color: var(--ciq-ink-900); line-height: 1.35;">{{ r.title }}</span>
+            <span style="display: block; font-size: 12px; color: var(--ciq-ink-500); margin-top: 3px;">{{ r.sub }}</span>
+            <span style="display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; color: {{ r.statusColor }};">{{ r.status }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="border: 1px solid var(--hairline); border-radius: 12px; box-shadow: var(--shadow-card); padding: 24px 26px;">
+        <div style="font-size: 18px; font-weight: 600; letter-spacing: -0.01em;">{{ rec.title }}</div>
+        <div style="font-size: 13px; color: var(--ciq-ink-500); margin: 4px 0 20px;">{{ rec.sub }}</div>
+        <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-ink-400); margin-bottom: 10px;">Agent findings · review each</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <sc-for list="{{ rec.findings }}" as="fd" hint-placeholder-count="3">
+            <div style="{{ fd.style }}">
+              <div style="display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 220px;">
+                  <div style="font-size: 14px; font-weight: 600;">{{ fd.title }}</div>
+                  <div style="font-size: 13px; line-height: 1.55; color: var(--ciq-ink-700); margin-top: 4px;">{{ fd.detail }}</div>
+                  <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ciq-ink-400); margin-top: 8px;">Source · {{ fd.src }}</div>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <button onClick="{{ fd.accept }}" style="{{ fd.acceptStyle }}">Accept</button>
+                  <button onClick="{{ fd.dismiss }}" style="{{ fd.dismissStyle }}">Dismiss</button>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 20px;">
+          <button onClick="{{ commit }}" style="{{ commitStyle }}">{{ commitLabel }}</button>
+          <span style="font-size: 12px; color: var(--ciq-ink-400);">{{ commitHint }}</span>
+        </div>
+        <sc-if value="{{ rec.committed }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top: 20px; padding: 16px 18px; border-radius: 8px; background: var(--ciq-green-050); border: 1px solid var(--ciq-green-300);">
+            <div style="font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ciq-green-700); margin-bottom: 6px;">Committed to the system of record</div>
+            <div style="font-size: 13px; line-height: 1.55; color: var(--ciq-ink-800);">{{ rec.summary }}</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ showChat }}" hint-placeholder-val="{{ false }}">
+    <div style="border: 1px solid var(--hairline); border-radius: 12px; box-shadow: var(--shadow-card); overflow: hidden; max-width: 880px;">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-bottom: 1px solid var(--divider); background: var(--ciq-ink-025);">
+        <span style="width: 8px; height: 8px; border-radius: 999px; background: var(--ciq-green-500);"></span>
+        <span style="font-size: 13px; font-weight: 600;">{{ ag.name }}</span>
+        <span style="font-family: var(--font-mono); font-size: 10px; color: var(--ciq-ink-400);">Grounded in Raintree data · cites every answer</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; padding: 20px 18px; min-height: 260px;">
+        <sc-for list="{{ messages }}" as="m" hint-placeholder-count="1">
+          <div style="{{ m.wrap }}">
+            <div style="{{ m.bubble }}">{{ m.text }}</div>
+            <sc-if value="{{ m.hasCites }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
+                <sc-for list="{{ m.cites }}" as="ct" hint-placeholder-count="1">
+                  <span style="font-family: var(--font-mono); font-size: 10px; color: var(--ciq-ink-500); border: 1px solid var(--hairline); border-radius: 4px; padding: 2px 6px;">{{ ct.label }}</span>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ m.hasActions }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; gap: 8px; margin-top: 10px;">
+                <sc-for list="{{ m.actions }}" as="ac" hint-placeholder-count="1">
+                  <button onClick="{{ ac.onClick }}" style="{{ ac.style }}">{{ ac.label }}</button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ciq-ink-400);">Checking Raintree records…</div>
+        </sc-if>
+      </div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; padding: 0 18px 12px;">
+        <sc-for list="{{ suggestions }}" as="sg" hint-placeholder-count="2">
+          <button onClick="{{ sg.onClick }}" style="font-family: var(--font-sans); font-size: 12px; color: var(--ciq-ink-700); background: #FFFFFF; border: 1px solid var(--hairline-strong); border-radius: 999px; padding: 6px 12px; cursor: pointer; text-align: left;" style-hover="background: var(--ciq-ink-050);">{{ sg.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display: flex; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--divider);">
+        <input type="text" placeholder="Ask the agent" value="{{ input }}" onChange="{{ onInput }}" onKeyDown="{{ onKey }}" style="flex: 1; height: 40px; border: 1px solid var(--hairline-strong); border-radius: 6px; padding: 0 12px; font-family: var(--font-sans); font-size: 14px;">
+        <button onClick="{{ send }}" style="height: 40px; padding: 0 18px; border: 0; border-radius: 8px; background: var(--ciq-blue-600); color: #FFFFFF; font-family: var(--font-sans); font-size: 14px; font-weight: 600; cursor: pointer;" style-hover="background: var(--ciq-blue-700);">Send</button>
+      </div>
+    </div>
+  </sc-if>
+</main>
+</sc-if>
+
+<sc-if value="{{ isPlan }}" hint-placeholder-val="{{ false }}">
+<main style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 48px clamp(20px, 4vw, 48px) 80px; box-sizing: border-box;">
+  <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pq-blue); margin-bottom: 14px;">Plan · four phases</div>
+  <h1 style="font-family: var(--font-display); font-weight: 400; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 12px; color: var(--pq-midnight);">Start with this quarter’s ARR, then scale into 2027.</h1>
+  <p style="font-size: 16px; line-height: 1.55; color: var(--pq-steel); margin: 0 0 36px; max-width: 680px;">Phase 1 funds the rest: revenue agents go live first, margin and scale work follows once the measurement ledger is in place.</p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+    <sc-for list="{{ phases }}" as="ph" hint-placeholder-count="4">
+      <div style="border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="background: var(--pq-midnight); color: #FFFFFF; padding: 18px 20px;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--pq-signal);">Phase {{ ph.n }} · {{ ph.when }}</div>
+          <div style="font-family: var(--font-display); font-size: 22px; margin-top: 6px;">{{ ph.title }}</div>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+          <sc-for list="{{ ph.agents }}" as="pa" hint-placeholder-count="3">
+            <button onClick="{{ pa.onOpen }}" style="display: flex; justify-content: space-between; gap: 10px; text-align: left; border: 0; border-bottom: 1px solid var(--divider); background: #FFFFFF; padding: 12px 20px; cursor: pointer; font-family: var(--font-sans);" style-hover="background: var(--ciq-ink-025);">
+              <span style="font-size: 13px; font-weight: 500; color: var(--ciq-ink-800);">{{ pa.name }}</span>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: {{ pa.kindColor }}; flex: none;">{{ pa.valueLabel }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="margin-top: auto; padding: 14px 20px; background: var(--ciq-ink-025); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--ciq-ink-500);">
+          <span>Phase value</span><span style="font-weight: 600; color: var(--ciq-ink-900);">{{ ph.total }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</main>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;roiStance&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Conservative&quot;,&quot;Base&quot;,&quot;Aggressive&quot;],&quot;default&quot;:&quot;Base&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;ROI model&quot;}}">
+const PW_HASH = '473fab9363d0c62e42a0ebe578cf7b041d4e4a4eda82342b75c6d096e1a0d982';
+const STANCE = { Conservative: 0.7, Base: 1, Aggressive: 1.3 };
+const PILLAR = { A: 'A · Seize the opportunity', B: 'B · Operational excellence' };
+const money = (v) => v >= 1e6 ? '$' + (v / 1e6).toFixed(2).replace(/0$/, '') + 'M' : '$' + Math.round(v / 1e3) + 'K';
+const REV = 'var(--ciq-blue-600)', SAVE = 'var(--ciq-green-700)';
+const btn = (on) => 'font-family: var(--font-sans); font-size: 13px; font-weight: 600; padding: 8px 14px; border-radius: 8px; cursor: pointer; border: 1px solid ' + (on ? 'var(--pq-midnight)' : 'transparent') + '; background: ' + (on ? 'var(--pq-midnight)' : 'transparent') + '; color: ' + (on ? '#FFFFFF' : 'var(--ciq-ink-600)') + ';';
+const tab = (on) => 'font-family: var(--font-sans); font-size: 14px; font-weight: 600; padding: 10px 16px; border: 0; background: transparent; cursor: pointer; margin-bottom: -1px; border-bottom: 2px solid ' + (on ? 'var(--ciq-blue-600)' : 'transparent') + '; color: ' + (on ? 'var(--ciq-ink-900)' : 'var(--ciq-ink-400)') + ';';
+
+class Component extends DCLogic {
+  state = { locked: true, pw: '', pwError: false, d: null, view: 'overview', pillar: 'All', query: '', id: null, tab: 'proto', step: 0, sel: 0, dec: {}, done: {}, chats: {}, typing: false, input: '' };
+
+  tryUnlock() {
+    const pw = this.state.pw || '';
+    crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)).then(h => {
+      const hex = [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, '0')).join('');
+      if (hex === PW_HASH) { try { sessionStorage.setItem('rt-plan-auth', '1'); } catch (e) {} this.setState({ locked: false, pwError: false, pw: '' }); }
+      else this.setState({ pwError: true });
+    });
+  }
+
+  componentDidMount() {
+    let ok = false; try { ok = sessionStorage.getItem('rt-plan-auth') === '1'; } catch (e) {}
+    if (ok) this.setState({ locked: false });
+    Promise.all([import('./raintree-a.js'), import('./raintree-b1.js'), import('./raintree-b2.js')]).then(([a, b1, b2]) => {
+      const agents = [...a.A, ...b1.B1, ...b1.B2, ...b2.B3, ...b2.B4];
+      this.setState({ d: { agents, areas: b2.AREAS, phases: b2.PHASES } });
+    });
+  }
+
+  go(p) { this.setState(p); window.scrollTo(0, 0); }
+  open(id) { this.go({ view: 'agent', id, tab: 'proto', sel: 0, step: 0 }); }
+  mult() { return STANCE[this.props.roiStance] ?? 1; }
+  val(g) { return Math.round(g.value * this.mult() / 1e4) * 1e4; }
+
+  chatFor(g) {
+    return this.state.chats[g.id] || [{ role: 'agent', text: 'This prototype runs on representative Raintree data. Pick a question below or type your own; I answer only from cited sources and hand anything else to a person.' }];
+  }
+  pushChat(g, msgs) { this.setState(s => ({ chats: { ...s.chats, [g.id]: [...(s.chats[g.id] || this.chatFor(g)), ...msgs] } })); }
+  ask(g, text) {
+    if (!text.trim()) return;
+    const words = text.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(' ').filter(w => w.length > 4);
+    let best = null, score = 0;
+    g.proto.qa.forEach(qa => { const n = words.filter(w => qa[0].toLowerCase().includes(w)).length; if (n > score) { score = n; best = qa; } });
+    this.pushChat(g, [{ role: 'user', text }]);
+    this.setState({ typing: true, input: '' });
+    setTimeout(() => {
+      const m = best ? { role: 'agent', text: best[1], cites: best[2] || [], actions: best[3] || [] }
+        : { role: 'agent', text: 'I don’t have a sourced answer for that in this prototype. In production I would say so and route it to the right person with the context attached.' };
+      this.setState({ typing: false });
+      this.pushChat(g, [m]);
+    }, 750);
+  }
+
+  renderVals() {
+    const { d, view, pillar, query, id, tab: t, step, sel, dec, done, typing, input } = this.state;
+    const agents = d ? d.agents : [];
+    const areasDef = d ? d.areas : [];
+    const areaOf = (code) => areasDef.find(a => a.code === code) || {};
+    const decorate = (g) => ({
+      ...g, onOpen: () => this.open(g.id),
+      kindLabel: g.kind === 'rev' ? 'Annual revenue lift' : 'Annual saving',
+      kindColor: g.kind === 'rev' ? REV : SAVE,
+      valueLabel: money(this.val(g)),
+      protoKind: g.proto.t === 'c' ? 'Assistant' : 'Review queue'
+    });
+    const revT = agents.filter(g => g.kind === 'rev').reduce((s, g) => s + this.val(g), 0);
+    const saveT = agents.filter(g => g.kind === 'save').reduce((s, g) => s + this.val(g), 0);
+
+    const q = query.trim().toLowerCase();
+    const areas = areasDef.filter(a => pillar === 'All' || a.pillar === pillar).map(a => {
+      const list = agents.filter(g => g.area === a.code && (!q || [g.name, g.pain, g.solution, g.goals.join(' ')].join(' ').toLowerCase().includes(q))).map(decorate);
+      const tot = list.reduce((s, g) => s + this.val(g), 0);
+      return { ...a, pillar: PILLAR[a.pillar], agents: list, total: list.length ? money(tot) + ' modelled / yr' : '' };
+    }).filter(a => a.agents.length);
+
+    const chip = (key, label) => ({ label, onClick: () => this.setState({ pillar: key }),
+      style: 'font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; cursor: pointer; border: 1px solid ' + (pillar === key ? 'var(--pq-midnight)' : 'var(--hairline-strong)') + '; background: ' + (pillar === key ? 'var(--pq-midnight)' : '#FFFFFF') + '; color: ' + (pillar === key ? '#FFFFFF' : 'var(--ciq-ink-600)') + ';' });
+
+    const g0 = agents.find(x => x.id === id);
+    const g = g0 ? decorate(g0) : null;
+    let ag = {}, queue = [], rec = { findings: [] }, messages = [], suggestions = [], commitStyle = '', commitLabel = '', commitHint = '';
+    if (g) {
+      const ar = areaOf(g.area);
+      const payback = Math.max(1, Math.round(g.cost / (this.val(g) / 12) * 10) / 10);
+      ag = { ...g, eyebrow: g.area + ' · ' + ar.name + ' · ' + PILLAR[ar.pillar],
+        goalChips: g.goals.map(label => ({ label })),
+        facts: [{ label: 'Time to build', value: g.weeks }, { label: 'Build estimate', value: money(g.cost) }, { label: 'Payback', value: payback + ' months' }, { label: 'Owner', value: 'To confirm' }],
+        steps: g.steps.map((s, i) => ({ label: 'Step ' + (i + 1) + ' of ' + g.steps.length, title: s, onClick: () => this.setState({ step: i }),
+          style: 'border-radius: 12px; padding: 18px 20px; cursor: pointer; border: 1px solid ' + (i === step ? 'var(--ciq-blue-600)' : 'var(--hairline)') + '; background: ' + (i <= step ? 'var(--ciq-ink-025)' : '#FFFFFF') + ';' })) };
+
+      if (g.proto.t === 'q') {
+        queue = g.proto.r.map((r, i) => {
+          const k = g.id + ':' + i;
+          return { title: r[0], sub: r[1], status: done[k] ? 'Committed' : i === sel ? 'In review' : 'Awaiting review',
+            statusColor: done[k] ? SAVE : i === sel ? REV : 'var(--ciq-ink-400)', onClick: () => this.setState({ sel: i }),
+            style: 'display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--divider); padding: 14px 16px; cursor: pointer; font-family: var(--font-sans); background: ' + (i === sel ? 'var(--ciq-blue-050, #EEF2FB)' : '#FFFFFF') + ';' };
+        });
+        const r = g.proto.r[sel] || g.proto.r[0];
+        const rk = g.id + ':' + sel;
+        const fs = g.proto.f.map((f, fi) => {
+          const k = rk + ':' + fi, v = dec[k];
+          const small = (on, c) => 'font-family: var(--font-sans); font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 6px; cursor: pointer; border: 1px solid ' + (on ? c : 'var(--hairline-strong)') + '; background: ' + (on ? c : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : 'var(--ciq-ink-700)') + ';';
+          return { title: f[0], detail: f[1], src: f[2],
+            style: 'border-radius: 8px; padding: 14px 16px; border: 1px solid var(--hairline); background: ' + (v === 'ok' ? 'var(--ciq-green-050)' : v === 'no' ? 'var(--ciq-ink-025)' : '#FFFFFF') + '; opacity: ' + (v === 'no' ? 0.6 : 1) + ';',
+            accept: () => this.setState(s => ({ dec: { ...s.dec, [k]: 'ok' } })), dismiss: () => this.setState(s => ({ dec: { ...s.dec, [k]: 'no' } })),
+            acceptStyle: small(v === 'ok', 'var(--ciq-green-700)'), dismissStyle: small(v === 'no', 'var(--ciq-ink-600)'), v };
+        });
+        const all = fs.every(f => f.v), isDone = !!done[rk];
+        const acc = fs.filter(f => f.v === 'ok').map(f => f.title);
+        rec = { title: r[0], sub: r[1], findings: fs, committed: isDone,
+          summary: acc.length ? 'Actioned: ' + acc.join('; ') + '. Logged with sources for audit, attributed to the reviewer.' : 'All findings dismissed. Logged as reviewed with no change.' };
+        commitLabel = isDone ? 'Undo commit' : 'Commit recommendation';
+        commitHint = isDone ? 'Reversible for 24 hours.' : all ? 'Nothing changes in Raintree systems until you commit.' : 'Review every finding to commit.';
+        commitStyle = 'font-family: var(--font-sans); font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 8px; border: 0; cursor: ' + (all ? 'pointer' : 'not-allowed') + '; background: ' + (isDone ? 'var(--ciq-ink-600)' : all ? 'var(--ciq-blue-600)' : 'var(--ciq-ink-100)') + '; color: ' + (all ? '#FFFFFF' : 'var(--ciq-ink-400)') + ';';
+        this._commit = () => { if (all) this.setState(s => ({ done: { ...s.done, [rk]: !s.done[rk] } })); };
+      } else {
+        const msgs = this.chatFor(g);
+        const asked = msgs.filter(m => m.role === 'user').map(m => m.text);
+        messages = msgs.map(m => {
+          const user = m.role === 'user', sys = m.role === 'sys';
+          return { text: m.text, hasCites: !!(m.cites && m.cites.length), cites: (m.cites || []).map(label => ({ label })),
+            hasActions: !!(m.actions && m.actions.length),
+            actions: (m.actions || []).map(a => ({ label: a[0], onClick: () => this.pushChat(g, [{ role: 'sys', text: a[0] + ' — done. Logged for review with the source attached.' }]),
+              style: 'font-family: var(--font-sans); font-size: 12px; font-weight: 600; padding: 7px 12px; border-radius: 6px; cursor: pointer; border: 1px solid ' + (a[1] ? 'var(--ciq-blue-600)' : 'var(--hairline-strong)') + '; background: ' + (a[1] ? 'var(--ciq-blue-600)' : '#FFFFFF') + '; color: ' + (a[1] ? '#FFFFFF' : 'var(--ciq-ink-700)') + ';' })),
+            wrap: 'display: flex; flex-direction: column; align-items: ' + (user ? 'flex-end' : 'flex-start') + ';',
+            bubble: 'max-width: 78%; white-space: pre-line; font-size: 14px; line-height: 1.55; padding: 10px 14px; border-radius: 10px; ' + (user ? 'background: var(--ciq-blue-600); color: #FFFFFF;' : sys ? 'background: var(--ciq-green-050); color: var(--ciq-green-700); font-size: 12px;' : 'background: var(--ciq-ink-050); color: var(--ciq-ink-900);') };
+        });
+        suggestions = g.proto.qa.filter(qa => !asked.includes(qa[0])).map(qa => ({ label: qa[0], onClick: () => this.ask(g, qa[0]) }));
+      }
+    }
+
+    const phases = (d ? d.phases : []).map(p => {
+      const list = p.ids.map(i => agents.find(x => x.id === i)).filter(Boolean).map(decorate);
+      return { ...p, agents: list, total: money(list.reduce((s, x) => s + this.val(x), 0)) };
+    });
+
+    return {
+      locked: this.state.locked, pw: this.state.pw, pwError: this.state.pwError,
+      pwBorder: this.state.pwError ? 'var(--ciq-red-500)' : 'var(--hairline-strong)',
+      onPw: (e) => this.setState({ pw: e.target.value, pwError: false }),
+      onPwKey: (e) => { if (e.key === 'Enter') this.tryUnlock(); },
+      unlock: () => this.tryUnlock(),
+      isOverview: view === 'overview', isAgent: view === 'agent', isPlan: view === 'plan',
+      navOverview: btn(view !== 'plan'), navPlan: btn(view === 'plan'),
+      goOverview: () => this.go({ view: 'overview' }), goPlan: () => this.go({ view: 'plan' }),
+      kpis: [
+        { label: 'Annual revenue lift', value: money(revT), note: 'Customer-facing agents' },
+        { label: 'Annual savings', value: money(saveT), note: 'Back-office agents' },
+        { label: 'Toward $2M AI OS target', value: Math.min(100, Math.round(saveT / 2e6 * 100)) + '%', note: 'Of modelled savings' },
+        { label: 'Agents', value: String(agents.length || 18), note: 'Six focus areas, two pillars' }
+      ],
+      pillarChips: [chip('All', 'All'), chip('A', PILLAR.A), chip('B', PILLAR.B)],
+      query, onQuery: (e) => this.setState({ query: e.target.value }),
+      areas, isEmpty: !!d && areas.length === 0,
+      ag, queue, rec, messages, suggestions, typing, input,
+      tabProto: () => this.setState({ tab: 'proto' }), tabPlan: () => this.setState({ tab: 'plan' }),
+      tabProtoStyle: tab(t === 'proto'), tabPlanStyle: tab(t === 'plan'),
+      showPlanTab: !!g && t === 'plan', showQueue: !!g && t === 'proto' && g.proto.t === 'q', showChat: !!g && t === 'proto' && g.proto.t === 'c',
+      commit: () => this._commit && this._commit(), commitStyle, commitLabel, commitHint,
+      onInput: (e) => this.setState({ input: e.target.value }),
+      onKey: (e) => { if (e.key === 'Enter' && g) this.ask(g, input); },
+      send: () => g && this.ask(g, input),
+      phases
+    };
+  }
+}
+</script>
+</body>
+</html>

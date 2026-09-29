@@ -1,0 +1,229 @@
+/* ============================================================
+   PRAXISIQ DESIGN SYSTEM — colors_and_type.css
+   Single source of truth for color, type, spacing, radii, shadows.
+   PraxisIQ is the parent brand; ContractsIQ is the product surface.
+   The brand kit (editorial / marketing / decks) and the product UI
+   (ContractsIQ app) share a palette but differ in feel:
+     - Brand kit: editorial, restrained, serif display, mono receipts.
+     - Product:   utility-first, dense, Inter-only, brighter blue accent.
+   Both ladders coexist below; pick one role and stay in lane.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ───────── Brand palette (editorial / kit) ───────── */
+  --pq-midnight:    #0A1620;  /* primary dark surface */
+  --pq-ink:         #0E1B26;  /* secondary dark surface */
+  --pq-night:       #0A1A24;
+  --pq-blue:        #1D7B99;  /* heritage Praxis Blue — the mark */
+  --pq-blue-deep:   #0F5870;  /* hover / pressed / dense data */
+  --pq-signal:      #5FE2D6;  /* live state — used rarely */
+  --pq-sand:        #C9B58A;  /* editorial accent */
+  --pq-bone:        #F4F1EA;  /* primary light surface */
+  --pq-bone-warm:   #EFEAE0;
+  --pq-mist:        #E6E8EC;  /* dividers, subtle surfaces */
+  --pq-steel:       #4B5563;  /* secondary body text */
+  --pq-graphite:    #1F2937;  /* primary body text */
+  --pq-white:       #FFFFFF;
+  --pq-black:       #000000;
+
+  /* ───────── Product palette (ContractsIQ app) ─────────
+     Lifted directly from the Figma color frame. The product blue
+     is brighter and more institutional than the editorial Praxis
+     Blue — it carries CTAs, primary buttons, links, chart ink. */
+  --ciq-blue-900:   #061A4A;
+  --ciq-blue-800:   #0D2980;
+  --ciq-blue-700:   #102870;  /* primary action — pressed */
+  --ciq-blue-600:   #1C378A;  /* primary action — default */
+  --ciq-blue-500:   #3D5AB2;  /* primary action — hover lighten */
+  --ciq-blue-400:   #5E78C8;
+  --ciq-blue-300:   #92A5DC;
+  --ciq-blue-200:   #C4D0EC;
+  --ciq-blue-100:   #E3E9FA;
+  --ciq-blue-050:   #F2F5FD;
+
+  --ciq-ink-900:    #030C26;  /* heaviest text */
+  --ciq-ink-800:    #0B0C0F;
+  --ciq-ink-700:    #1F2229;  /* default text */
+  --ciq-ink-600:    #40454D;
+  --ciq-ink-500:    #5A5F66;  /* muted text */
+  --ciq-ink-400:    #6D7585;
+  --ciq-ink-300:    #777D85;
+  --ciq-ink-200:    #A4A9B0;  /* placeholder / disabled */
+  --ciq-ink-100:    #D3D6DB;
+  --ciq-ink-050:    #E1E4E8;
+  --ciq-ink-025:    #EDEFF2;  /* row hover, chip rest */
+  --ciq-ink-012:    #F5F6F7;  /* table stripe */
+  --ciq-bg:         #FFFFFF;
+
+  /* Status palette — pill + tab colors */
+  --ciq-green-700:  #136C2E;
+  --ciq-green-500:  #1F9D43;
+  --ciq-green-300:  #B7E5C2;
+  --ciq-green-050:  #EAF7EE;
+
+  --ciq-red-700:    #991B1B;
+  --ciq-red-500:    #B91C1C;
+  --ciq-red-300:    #F4B7B7;
+  --ciq-red-050:    #FDECEC;
+
+  --ciq-amber-700:  #815500;
+  --ciq-amber-500:  #C28A1E;
+  --ciq-amber-300:  #F4D58A;
+  --ciq-amber-050:  #FFF4E0;
+
+  --ciq-violet-700: #5B21B6;
+  --ciq-violet-500: #7C3AED;
+  --ciq-violet-300: #C4B5FD;
+  --ciq-violet-050: #F5F0FF;
+
+  /* ───────── Shadow tokens ───────── */
+  --shadow-card:     0 1px 2px rgba(0,0,0,0.04), 0 1px 1px rgba(0,0,0,0.02);
+  --shadow-card-2:   0 2px 4px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-modal:    0 20px 40px -12px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-dropdown: 0 12px 20px -6px rgba(0,0,0,0.16), 0 1px 6px -2px rgba(0,0,0,0.10);
+  --shadow-dropdown-2: 0 8px 16px -4px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-button:   0 1px 0 rgba(255,255,255,0.10) inset, 0 1px 2px rgba(0,0,0,0.08);
+
+  /* ───────── Radii ───────── */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* ───────── Spacing — 4-pt scale ───────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ───────── Type — families ───────── */
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ───────── Semantic tokens — light theme defaults ───────── */
+  --surface:         var(--pq-white);
+  --surface-alt:     var(--pq-bone);
+  --surface-sunken:  var(--ciq-ink-012);
+  --panel:           var(--pq-midnight);
+  --panel-text:      #E8ECEE;
+  --panel-muted:     #9AA3AB;
+
+  --fg-strong:       var(--ciq-ink-900);  /* h1, key numbers */
+  --fg:              var(--ciq-ink-700);  /* body */
+  --fg-muted:        var(--ciq-ink-500);  /* secondary */
+  --fg-subtle:       var(--ciq-ink-300);  /* meta / hint */
+  --fg-on-accent:    #FFFFFF;
+  --link:            var(--ciq-blue-600);
+  --link-hover:      var(--ciq-blue-700);
+
+  --accent:          var(--pq-blue);      /* editorial / marketing */
+  --accent-product:  var(--ciq-blue-600); /* product CTAs */
+  --accent-hover:    var(--ciq-blue-700);
+
+  --hairline:        rgba(10,22,32,0.10);
+  --hairline-strong: rgba(10,22,32,0.18);
+  --divider:         var(--ciq-ink-050);
+}
+
+[data-theme="dark"] {
+  --surface:         var(--pq-midnight);
+  --surface-alt:     var(--pq-ink);
+  --surface-sunken:  #06101A;
+  --fg-strong:       #FFFFFF;
+  --fg:              #E8ECEE;
+  --fg-muted:        #9AA3AB;
+  --fg-subtle:       #6B7480;
+  --hairline:        rgba(255,255,255,0.10);
+  --hairline-strong: rgba(255,255,255,0.18);
+  --divider:         rgba(255,255,255,0.08);
+}
+
+/* ───────── Element-level semantic styles ───────── */
+html, body { background: var(--surface); color: var(--fg); }
+body {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Editorial / marketing hierarchy — Source Serif display */
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -0.022em;
+  color: var(--fg-strong);
+}
+.h-section {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.10;
+  letter-spacing: -0.018em;
+  color: var(--fg-strong);
+}
+.h-card {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  color: var(--fg-strong);
+}
+
+/* Product / UI hierarchy — Inter only */
+h1, .ui-h1 { font: 700 28px/36px var(--font-sans); letter-spacing: -0.012em; color: var(--fg-strong); }
+h2, .ui-h2 { font: 700 24px/32px var(--font-sans); letter-spacing: -0.010em; color: var(--fg-strong); }
+h3, .ui-h3 { font: 700 20px/28px var(--font-sans); letter-spacing: -0.008em; color: var(--fg-strong); }
+h4, .ui-h4 { font: 700 16px/24px var(--font-sans); color: var(--fg-strong); }
+h5, .ui-h5 { font: 600 14px/20px var(--font-sans); color: var(--fg-strong); }
+h6, .ui-h6 { font: 600 13px/20px var(--font-sans); color: var(--fg-strong); }
+
+.lede   { font: 400 17px/1.55 var(--font-sans); color: var(--fg-muted); max-width: 64ch; }
+p, .body { font: 400 14px/1.55 var(--font-sans); color: var(--fg); }
+.body-sm { font: 400 13px/1.55 var(--font-sans); color: var(--fg); }
+.caption { font: 400 12px/1.5 var(--font-sans); color: var(--fg-muted); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.label-input { font: 600 13px/1.4 var(--font-sans); color: var(--fg-strong); }
+.status-label { font: 700 12px/1 var(--font-sans); letter-spacing: 0.02em; }
+
+.metric-num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+  font-weight: 500;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--fg-strong);
+}
+.metric-num .unit { font-size: 0.5em; color: var(--accent); margin-left: 3px; }
+
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
+
+code, pre, .mono { font-family: var(--font-mono); font-size: 0.9em; }
+
+hr { border: 0; border-top: 1px solid var(--divider); margin: var(--space-6) 0; }
